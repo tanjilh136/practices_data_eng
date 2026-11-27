@@ -57,16 +57,18 @@ class ClientLoader:
             raise
         self.logger.info("inserted %d rows into %s",len(df),self.table)
         return len(df)
-setup_logging()
-logger = logging.getLogger(__name__)
 
-clients = [
-    Client("Tanjil", "Hasan", "646464646", 45, "Bangladeshi"),
-    Client("Zahid", "Hasan", "787878", 56, "Bangladeshi"),
-    Client("Istiak", "Ahmed", "9898989", 87, "Bangladeshi"),
-]
+if __name__ == "__main__":
+    setup_logging()
+    logger = logging.getLogger(__name__)
 
-engine = build_engine()
-loader = ClientLoader(engine)
-inserted = loader.load(clients)
-logger.info("Done, %d rows inserted",inserted)
+    clients = [
+        Client("Tanjil", "Hasan", "646464646", 45, "Bangladeshi"),
+        Client("Zahid", "Hasan", "787878", 56, "Bangladeshi"),
+        Client("Istiak", "Ahmed", "9898989", 87, "Bangladeshi"),
+    ]
+
+    engine = build_engine()
+    loader = ClientLoader(engine)
+    inserted = loader.load(clients)
+    logger.info("Done, %d rows inserted",inserted)
